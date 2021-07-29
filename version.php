@@ -28,4 +28,4 @@ $plugin->component = 'local_mdl_helper';
 $plugin->release = '0.1.0';
 $plugin->version = 2021072900;
 $plugin->requires = 2020061500;
-$plugin->maturity = MATURIY_ALPHA;
+$plugin->maturity = MATURITY_ALPHA;

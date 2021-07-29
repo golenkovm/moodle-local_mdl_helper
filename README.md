@@ -1,8 +1,6 @@
 # MDL helper #
 
-TODO Describe the plugin shortly here.
-
-TODO Provide more detailed description here.
+Helper plugin for Moodle bugs and enhancements.
 
 ## Installing via uploaded ZIP file ##
 
@@ -14,16 +12,16 @@ TODO Provide more detailed description here.
 
 ## Installing manually ##
 
-The plugin can be also installed by putting the contents of this directory to
+The plugin can be also installed using git
 
-    {your/moodle/dirroot}/local/mdl_helper
+    git clone git@github.com:golenkovm/moodle-local_mdl_helper.git local/mdl_helper
 
 Afterwards, log in to your Moodle site as an admin and go to _Site administration >
 Notifications_ to complete the installation.
 
 Alternatively, you can run
 
-    $ php admin/cli/upgrade.php
+    php admin/cli/upgrade.php
 
 to complete the installation from the command line.
 
