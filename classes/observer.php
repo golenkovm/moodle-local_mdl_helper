@@ -15,17 +15,28 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Plugin version and other meta-data are defined here.
+ * Event observer.
  *
  * @package     local_mdl_helper
  * @copyright   2021 Mikhail Golenkov <mikhailgolenkov@catalyst-au.net>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace local_mdl_helper;
+
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'local_mdl_helper';
-$plugin->release = '0.1.0';
-$plugin->version = 2021072901;
-$plugin->requires = 2020061500;
-$plugin->maturity = MATURITY_ALPHA;
+class observer {
+
+    /**
+     * Does a DB query to the mdl_user_lastaccess table.
+     *
+     * @param \core\event\user_enrolment_created $event
+     */
+    public static function query_user_lastaccess(\core\event\user_enrolment_created $event) {
+        global $DB;
+        // Get records with a random conditions, so table columns will be cached and
+        // this will break some core unit tests. See MDL-72239 for details.
+        $DB->get_records('user_lastaccess', ['id' => 1]);
+    }
+}

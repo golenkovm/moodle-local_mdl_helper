@@ -15,17 +15,19 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Plugin version and other meta-data are defined here.
+ * Event observer.
  *
  * @package     local_mdl_helper
+ * @category    event
  * @copyright   2021 Mikhail Golenkov <mikhailgolenkov@catalyst-au.net>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'local_mdl_helper';
-$plugin->release = '0.1.0';
-$plugin->version = 2021072901;
-$plugin->requires = 2020061500;
-$plugin->maturity = MATURITY_ALPHA;
+$observers = array (
+    array (
+        'eventname'   => '\core\event\user_enrolment_created',
+        'callback'    => '\local_mdl_helper\observer::query_user_lastaccess',
+    ),
+);
